@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 from tavily import TavilyClient
 from langchain_core.tools import tool
@@ -18,8 +19,8 @@ def place_to_visit(location: str, travel_plans: str) -> str:
     Tourist attractions and places to visit in {location} based on the following travel plans: {travel_plans}.
     """
 
-    response = tavily_client.query(query)
-    result = response["result"]
+    response = tavily_client.search(query)
+    results = response["results"]
 
     output = []
     for result in results:
