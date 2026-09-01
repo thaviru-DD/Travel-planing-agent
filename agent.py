@@ -9,6 +9,7 @@ from langchain_core.tools import tool
 
 from tools.placessvisit import place_to_visit
 
+
 # # Set up the LLM
 # llm = ChatOllama(model="llama3.2", temperature=0)
 
