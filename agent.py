@@ -8,7 +8,7 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.tools import tool
 
 from tools.placessvisit import place_to_visit
-
+from tools.distance import distance
 
 # # Set up the LLM
 # llm = ChatOllama(model="llama3.2", temperature=0)
@@ -89,7 +89,7 @@ def recall(key:str) -> str:
 
 agent = create_agent(
     model=model,
-    tools=[place_to_visit, remember, recall],
+    tools=[place_to_visit, distance, remember, recall],
     checkpointer=checkponter,
     system_prompt="You are a helpful travel assistant. Use the avilable tools when needed to answer the user's question",
 )
