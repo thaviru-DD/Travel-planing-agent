@@ -1,6 +1,9 @@
 langchain
 langchain-ollama
 langgraph
+langgraph-checkpoint-sqlite
+langchain-chroma
 python-dotenv
 tavily-python
+requests
 
