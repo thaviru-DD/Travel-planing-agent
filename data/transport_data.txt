@@ -1,0 +1,19 @@
+Transport: Car
+Price: Rs. 250 per kilometer
+Suitable for: 1-4 passengers
+Comfort level: High
+
+Transport: Van
+Price: Rs. 400 per kilometer
+Suitable for: 5-10 passengers
+Comfort level: High
+
+Transport: Bike
+Price: Rs. 120 per kilometer
+Suitable for: 1-2 passengers
+Comfort level: Low
+
+Transport: Bus
+Price: Rs. 560 per kilometer
+Suitable for: Large groups
+Comfort level: Medium

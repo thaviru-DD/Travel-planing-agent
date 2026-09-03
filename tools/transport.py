@@ -1,8 +1,28 @@
-# from langchain_core.tools import tool
+from langchain_core.tools import tool
+from transport_rag import retrieve_transport_info
 
-# @tool("transport", description="Find the best transport options for given travel plans")
-# def transport_options(travel_plans: str) -> str:
-#     query =  f"""
 
-#    Find the best transport options for the following travel plans: {travel_plans}.
-# """
+@tool(
+    "transport",
+    description="Recommend suitable transport options based on route, passenger count, and budget."
+)
+def transport(
+    origin: str,
+    destination: str,
+    budget: float,
+    passengers: int = 1
+) -> str:
+    """
+    Recommend transport options based on budget and passengers.
+    """
+
+    # Retrieve transport information from RAG
+    query = f"transport options for {passengers} passengers"
+    results = retrieve_transport_info(query)
+
+    print("\nRetrieved transport information:")
+
+    for document in results:
+        print(document.page_content)
+
+    return "Transport tool is working."

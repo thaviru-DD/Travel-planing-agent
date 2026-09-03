@@ -1,4 +1,3 @@
-from json import tool
 import sqlite3
 
 from langchain_ollama import ChatOllama
@@ -7,32 +6,9 @@ from langchain_core.prompts import ChatPromptTemplate
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.tools import tool
 
+#import tools
 from tools.placessvisit import place_to_visit
 from tools.distance import distance
-
-# # Set up the LLM
-# llm = ChatOllama(model="llama3.2", temperature=0)
-
-# # Register your tools
-# tools = [place_to_visit]
-
-# #  Difine the agent's system prompt
-# prompt = ChatPromptTemplate.from_messages([
-#     ("system", "You are a helpful travel assistant. Use the avilable tools when needed to answer the user's question"),
-#     ("human", "{input}"),
-#     ("placeholder", "{agent_scratchpad}")
-# ])
-
-# # Create the agent and executor
-# agent = create_tool_calling_agent(llm, tools=tools, prompt=prompt)
-# agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-
-
-# if __name__ == "__main__":
-#     user_input = input("Enter your travel Question: ")
-#     result = agent_executor.invoke({"input": user_input})
-#     print("\nFinal answer:")
-#     print(result["output"])
 
 
 #set up LLM model
@@ -57,7 +33,7 @@ cursor.execute(
 conn.commit()
 
 #checkpoint saver
-checkponter = SqliteSaver(conn)
+checkpointer = SqliteSaver(conn)
 
 
 #Create two tools for agent remember and recall logterm memory information
@@ -90,7 +66,7 @@ def recall(key:str) -> str:
 agent = create_agent(
     model=model,
     tools=[place_to_visit, distance, remember, recall],
-    checkpointer=checkponter,
+    checkpointer=checkpointer,
     system_prompt="You are a helpful travel assistant. Use the avilable tools when needed to answer the user's question",
 )
 
