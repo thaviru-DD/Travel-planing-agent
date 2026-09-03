@@ -6,7 +6,8 @@ A Python travel assistant that uses LangChain, LangGraph, Ollama, and Tavily to 
 
 - Python 3.9 or newer
 - Ollama
-- An Ollama model such as `llama3.2`
+- The Ollama chat model `llama3.2`
+- The Ollama embedding model `nomic-embed-text` for transport retrieval
 - A Tavily API key
 
 ## Setup
@@ -28,6 +29,7 @@ Install and start Ollama, then download the model used by the agent:
 
 ```bash
 ollama pull llama3.2
+ollama pull nomic-embed-text
 ```
 
 Create a `.env` file in the project root:
@@ -52,11 +54,14 @@ Enter a travel question when prompted, for example:
 Suggest places to visit in Kandy for a two-day trip.
 ```
 
-## Test the place tool
+The agent currently uses the places and distance tools and stores conversation
+memory in `travel_agent.db`.
 
-```bash
-./.venv/bin/python test_place.py
-```
+## Transport retrieval
+
+Transport retrieval uses the existing Chroma database in `chroma_db/` and the
+`nomic-embed-text` Ollama embedding model. The transport tool can be used from
+Python, but it is not currently registered in `agent.py`.
 
 ## Check dependencies
 
@@ -70,8 +75,9 @@ Suggest places to visit in Kandy for a two-day trip.
 .
 ├── agent.py
 ├── requirements.txt
-├── test_place.py
-├── test_search.py
+├── transport_rag.py
+├── data/
+├── chroma_db/
 └── tools/
 	├── calculator.py
 	├── distance.py

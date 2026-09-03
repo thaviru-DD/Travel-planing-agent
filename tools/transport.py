@@ -1,5 +1,6 @@
 from langchain_core.tools import tool
 from transport_rag import retrieve_transport_info
+from tools.distance import distance
 
 
 @tool(
@@ -12,17 +13,24 @@ def transport(
     budget: float,
     passengers: int = 1
 ) -> str:
-    """
-    Recommend transport options based on budget and passengers.
-    """
 
-    # Retrieve transport information from RAG
+    # Get transport information from RAG
     query = f"transport options for {passengers} passengers"
+
     results = retrieve_transport_info(query)
 
     print("\nRetrieved transport information:")
 
     for document in results:
         print(document.page_content)
+
+    # Get distance from Google Maps
+    distance_result = distance.invoke({
+        "origin": origin,
+        "destination": destination
+    })
+
+    print("\nDistance result:")
+    print(distance_result)
 
     return "Transport tool is working."
