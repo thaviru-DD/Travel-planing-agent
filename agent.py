@@ -7,8 +7,8 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.tools import tool
 
 #import tools
-from tools.placessvisit import place_to_visit
-from tools.distance import distance
+from tools.transport import transport
+from sub_agent.travel_info_agent import travel_info
 
 
 #set up LLM model
@@ -37,7 +37,6 @@ checkpointer = SqliteSaver(conn)
 
 
 #Create two tools for agent remember and recall logterm memory information
-
 @tool("remember", description="Remember a piece of inpformation about the user.")
 def remember(key:str,value:str) -> str:
     """ Store information about the user in long-term memory."""
@@ -65,9 +64,9 @@ def recall(key:str) -> str:
 
 agent = create_agent(
     model=model,
-    tools=[place_to_visit, distance, remember, recall],
+    tools=[remember, recall, transport, travel_info],
     checkpointer=checkpointer,
-    system_prompt="You are a helpful travel assistant. Use the avilable tools when needed to answer the user's question",
+    system_prompt="You are a helpful travel assistant. Use only avilable tools when needed to answer the user's question",
 )
 
 #Thread ID for the agent's memory
@@ -80,7 +79,6 @@ config = {
 
 # Chat loop
 while True:
-
     question = input("You: ")
 
     if question.lower() in ["exit", "quit"]:

@@ -1,66 +1,50 @@
+import os
+
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 
 
-# --------------------------------------------------
-# 1. Load transport data
-# --------------------------------------------------
-
-loader = TextLoader("data/transport_data.txt")
-documents = loader.load()
-
-
-# --------------------------------------------------
-# 2. Split into chunks
-# --------------------------------------------------
-
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=100,
-    chunk_overlap=20
-)
-
-chunks = text_splitter.split_documents(documents)
-
-
-# --------------------------------------------------
-# 3. Create embedding model
-# --------------------------------------------------
-
+# 1. Create embedding model
 embeddings = OllamaEmbeddings(
     model="nomic-embed-text"
 )
 
 
-# --------------------------------------------------
-# 4. Create / connect to Chroma vector database
-# --------------------------------------------------
+# 2. Create or load Chroma database
+if not os.path.exists("./chroma_db"):
 
-vectorstore = Chroma.from_documents(
-    documents=chunks,
-    embedding=embeddings,
-    persist_directory="./chroma_db"
-)
+    loader = TextLoader("data/transport_data.txt")
+    documents = loader.load()
+
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=100,
+        chunk_overlap=20
+    )
+
+    chunks = text_splitter.split_documents(documents)
+
+    vectorstore = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory="./chroma_db"
+    )
+
+else:
+
+    vectorstore = Chroma(
+        persist_directory="./chroma_db",
+        embedding_function=embeddings
+    )
 
 
-# --------------------------------------------------
-# 5. Create retriever
-# --------------------------------------------------
-
+# 3. Create retriever
 retriever = vectorstore.as_retriever(
-    search_kwargs={"k": 4}
+    search_kwargs={"k": 2}
 )
 
 
-# --------------------------------------------------
-# 6. Function used by transport.py
-# --------------------------------------------------
-
+# 4. Reusable retrieval function
 def retrieve_transport_info(query: str):
-    """
-    Retrieve relevant transport information
-    from the transport knowledge base.
-    """
-
     return retriever.invoke(query)
