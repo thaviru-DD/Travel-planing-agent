@@ -2,7 +2,7 @@ from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
 
 from tools.distance import distance
-from tools.placessvisit import place_to_visit
+from tools.places_to_visit import place_to_visit
 from tools.weather import weather
 
 from langchain_core.tools import tool
@@ -13,7 +13,7 @@ model = ChatOllama(model="llama3.2", temperature=0)
 
 travel_info_agent = create_agent(
     model=model,
-    tools=[place_to_visit],
+    tools=[place_to_visit, distance, weather],
     system_prompt="""
     You are a travel information specialist.
 
@@ -22,9 +22,9 @@ travel_info_agent = create_agent(
     - weather information 
     - places to visit 
 
-    Use avilable tools whenever needed. 
+    Use available tools whenever needed. 
 
-    If the user ask abot distance use distance tool.
+    If the user ask about distance use distance tool.
     If the user ask about weather use weather tool.
     If the user ask about places to visit use place_to_visit tool. 
 
@@ -39,9 +39,7 @@ travel_info_agent = create_agent(
 
 # Wrap sub agent as a tool
 
-@tool(
-    "travel_info",
-    description=(
+@tool("travel_info",description=(
         "Get travel information about distance, weather, "
         "and places to visit. Use this tool for travel-information requests."
     )
