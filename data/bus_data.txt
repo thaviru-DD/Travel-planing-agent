@@ -1,0 +1,35 @@
+BUS ROUTE: Colombo to Kandy
+
+Route Number: 01
+Starting Location: Colombo
+Destination: Kandy
+Bus Type: Normal
+Operator: SLTB
+Approximate Travel Time: 3.5 - 4.5 hours
+Frequency: Regular daily service
+Passenger Capacity: Approximately 50
+Notes: Suitable for budget-conscious travelers.
+
+BUS ROUTE: Colombo to Kandy
+
+Route Number: 01
+Starting Location: Colombo
+Destination: Kandy
+Bus Type: Semi-Luxury
+Operator: SLTB
+Approximate Travel Time: 3 - 4 hours
+Frequency: Regular daily service
+Passenger Capacity: Approximately 50
+Notes: More comfortable than normal service.
+
+BUS ROUTE: Colombo to Galle
+
+Route Number: 02
+Starting Location: Colombo
+Destination: Galle
+Bus Type: Normal
+Operator: SLTB
+Approximate Travel Time: 2.5 - 3.5 hours
+Frequency: Regular daily service
+Passenger Capacity: Approximately 50
+Notes: Suitable for budget-conscious travelers.
