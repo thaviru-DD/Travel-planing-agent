@@ -93,12 +93,13 @@ def distance(origin: str, destination: str) -> str:
     distance_km = distance_meters / 1000
 
 
-    # Google returns duration like "1234s"
-    duration = route["duration"]
-
+    # Google returns duration like 1h 30m
+    seconds = int(route["duration"].rstrip("s"))
+    hours, minutes = divmod(seconds // 60, 60)
+    duration_text = f"{hours} h {minutes} min" if hours else f"{minutes} min"
 
     return (
         f"Driving distance from {origin} to {destination}: "
         f"{distance_km:.2f} km. "
-        f"Estimated duration: {duration}."
+        f"Estimated driving time: {duration_text}."
     )

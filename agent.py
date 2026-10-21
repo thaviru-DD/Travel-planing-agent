@@ -7,8 +7,9 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.tools import tool
 
 #import tools
-from tools.transport import transport
+
 from sub_agents.travel_info_agent import travel_info
+from sub_agents.transport_agent import transport_agent
 
 
 #set up LLM model
@@ -40,7 +41,7 @@ checkpointer = SqliteSaver(conn)
 
 agent = create_agent(
     model=model,
-    tools=[transport, travel_info],
+    tools=[travel_info, transport_agent],
     checkpointer=checkpointer,
     system_prompt = """
             You are a travel planning assistant.
