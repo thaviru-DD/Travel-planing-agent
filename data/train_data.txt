@@ -1,0 +1,77 @@
+TRAIN ROUTE: Colombo to Kandy
+Starting Location: Colombo
+Destination: Kandy
+Departure Station: Colombo Fort
+Arrival Station: Kandy
+Train Type: Intercity Express
+Class: 2nd
+Approximate Travel Time: 3 - 3.5 hours
+Departure Times: 05:55, 07:00, 15:30
+Fare Per Person (LKR): 900
+Source: SAMPLE - replace with real data
+Notes: Reserved seats recommended on weekends.
+
+TRAIN ROUTE: Colombo to Kandy
+Starting Location: Colombo
+Destination: Kandy
+Departure Station: Colombo Fort
+Arrival Station: Kandy
+Train Type: Intercity Express
+Class: 3rd
+Approximate Travel Time: 3 - 3.5 hours
+Departure Times: 05:55, 07:00, 15:30
+Fare Per Person (LKR): 500
+Source: SAMPLE - replace with real data
+Notes: Cheapest option, can be crowded.
+
+TRAIN ROUTE: Colombo to Galle
+Starting Location: Colombo
+Destination: Galle
+Departure Station: Colombo Fort
+Arrival Station: Galle
+Train Type: Express
+Class: 2nd
+Approximate Travel Time: 2.5 - 3 hours
+Departure Times: 06:55, 10:25, 15:55
+Fare Per Person (LKR): 600
+Source: SAMPLE - replace with real data
+Notes: Coastal route with sea views.
+
+TRAIN ROUTE: Colombo to Galle
+Starting Location: Colombo
+Destination: Galle
+Departure Station: Colombo Fort
+Arrival Station: Galle
+Train Type: Express
+Class: 3rd
+Approximate Travel Time: 2.5 - 3 hours
+Departure Times: 06:55, 10:25, 15:55
+Fare Per Person (LKR): 300
+Source: SAMPLE - replace with real data
+Notes: Cheapest option, can be crowded.
+
+TRAIN ROUTE: Kandy to Ella
+Starting Location: Kandy
+Destination: Ella
+Departure Station: Kandy
+Arrival Station: Ella
+Train Type: Hill Country Express
+Class: 2nd
+Approximate Travel Time: 6 - 7 hours
+Departure Times: 08:47, 09:30
+Fare Per Person (LKR): 1000
+Source: SAMPLE - replace with real data
+Notes: Scenic hill country route. Seats sell out, book ahead.
+
+TRAIN ROUTE: Kandy to Ella
+Starting Location: Kandy
+Destination: Ella
+Departure Station: Kandy
+Arrival Station: Ella
+Train Type: Hill Country Express
+Class: 3rd
+Approximate Travel Time: 6 - 7 hours
+Departure Times: 08:47, 09:30
+Fare Per Person (LKR): 500
+Source: SAMPLE - replace with real data
+Notes: Cheapest option, unreserved and often crowded.
