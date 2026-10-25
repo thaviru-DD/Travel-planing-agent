@@ -54,6 +54,14 @@ Enter a travel question when prompted, for example:
 Suggest places to visit in Kandy for a two-day trip.
 ```
 
+### Example prompts
+
+
+1. Create a three-day trip from Colombo to Kandy starting on 15 November 2026 at 8:00 AM. I am travelling with my family, and there will be four passengers.
+2. What is the best way to travel from Colombo to Galle for two passengers on 20 November 2026, and how much will it cost?
+3. What places should I visit in Ella, and what will the weather be like during a two-day trip?
+
+
 The agent currently uses the places and distance tools and stores conversation
 memory in `travel_agent.db`.
 

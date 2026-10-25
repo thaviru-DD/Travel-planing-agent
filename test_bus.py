@@ -1,4 +1,3 @@
-
 from tools.bus import bus
 
 result = bus.invoke({
