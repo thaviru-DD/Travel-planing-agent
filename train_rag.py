@@ -19,8 +19,8 @@ if not os.path.exists("./train_chroma_db"):
     documents = loader.load()
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=100,
-        chunk_overlap=20
+        chunk_size=500,
+        chunk_overlap=50
     )
 
     chunks = text_splitter.split_documents(documents)
@@ -46,5 +46,5 @@ retriever = vectorstore.as_retriever(
 
 
 # 4. Reusable retrieval function
-def retrieve_transport_info(query: str):
+def retrieve_train_info(query: str):
     return retriever.invoke(query)
